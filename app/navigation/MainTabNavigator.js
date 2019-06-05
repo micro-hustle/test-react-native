@@ -4,6 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
+import LearnScreen from '../screens/LearnScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
@@ -20,6 +21,23 @@ HomeStack.navigationOptions = {
         Platform.OS === 'ios'
           ? `ios-information-circle${focused ? '' : '-outline'}`
           : 'md-information-circle'
+      }
+    />
+  ),
+};
+
+const LearnStack = createStackNavigator({
+  Learn: LearnScreen,
+});
+
+LearnStack.navigationOptions = {
+  tabBarLabel: 'Learn',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? 'ios-book' : 'md-book'
       }
     />
   ),
@@ -55,6 +73,7 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
+  LearnStack,
   LinksStack,
   SettingsStack,
 });
